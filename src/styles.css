@@ -1514,6 +1514,7 @@ button:disabled {
 
 .support-upi-info {
   margin-bottom: 18px;
+  text-align: center;
 }
 
 .support-upi-badge {

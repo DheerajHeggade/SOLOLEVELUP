@@ -424,6 +424,8 @@ if (instructionsBtn) {
     hud.instructionsModal.open();
   });
 }
+
+
 if (new URLSearchParams(location.search).has('demo')) void start('demo');
 
 if (import.meta.env.DEV) {
