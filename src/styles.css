@@ -1166,6 +1166,207 @@ button:disabled {
 }
 
 /* ════════════════════════════════════════════
+   HOW TO PLAY / INSTRUCTIONS MODAL
+   ════════════════════════════════════════════ */
+.btn-instruction {
+  background: linear-gradient(135deg, rgba(0, 180, 216, 0.2), rgba(0, 119, 182, 0.3)) !important;
+  border: 1px solid rgba(0, 180, 216, 0.5) !important;
+  color: #caf0f8 !important;
+  text-shadow: 0 0 8px rgba(0, 180, 216, 0.6);
+  box-shadow: 0 0 15px rgba(0, 180, 216, 0.2);
+}
+
+.btn-instruction:hover {
+  background: linear-gradient(135deg, rgba(0, 180, 216, 0.35), rgba(0, 119, 182, 0.45)) !important;
+  border-color: #00b4d8 !important;
+  box-shadow: 0 0 25px rgba(0, 180, 216, 0.45);
+}
+
+.instructions-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+}
+
+.instructions-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(1, 4, 16, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.instructions-panel {
+  position: relative;
+  z-index: 2;
+  width: min(520px, 92vw);
+  background: rgba(3, 10, 32, 0.98);
+  border: 1px solid rgba(0, 168, 255, 0.65);
+  border-radius: 4px;
+  padding: 26px 26px 22px;
+  box-shadow:
+    0 0 0 1px rgba(0, 168, 255, 0.15) inset,
+    0 0 50px rgba(0, 168, 255, 0.35),
+    0 0 100px rgba(0, 80, 200, 0.2),
+    0 25px 80px rgba(0, 0, 0, 0.95);
+  animation: support-panel-in 0.35s cubic-bezier(0.18, 1.25, 0.35, 1) forwards;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.instructions-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: transparent;
+  border: none;
+  color: rgba(0, 168, 255, 0.6);
+  font-size: 26px;
+  line-height: 1;
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.instructions-close:hover {
+  color: #00e1ff;
+  text-shadow: 0 0 10px #00a8ff;
+}
+
+.instructions-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.instructions-sys-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: var(--sl-blue);
+  text-shadow: 0 0 10px var(--sl-blue-glow);
+}
+
+.instructions-title {
+  font: 800 20px var(--font-display);
+  letter-spacing: 2px;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 0 15px rgba(0, 168, 255, 0.8);
+  margin-top: 6px;
+  margin-bottom: 4px;
+}
+
+.instructions-subtitle {
+  font: 12px var(--font-body);
+  color: rgba(160, 200, 255, 0.7);
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.instructions-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.instr-step {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 10px 12px;
+  background: rgba(0, 24, 60, 0.5);
+  border: 1px solid rgba(0, 168, 255, 0.2);
+  border-radius: 4px;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.instr-step:hover {
+  border-color: rgba(0, 168, 255, 0.5);
+  background: rgba(0, 34, 80, 0.6);
+}
+
+.instr-step-icon {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(0, 168, 255, 0.4), rgba(0, 80, 200, 0.4));
+  border: 1px solid #00d2ff;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 700 12px var(--font-display);
+  box-shadow: 0 0 10px rgba(0, 168, 255, 0.4);
+}
+
+.instr-step-body strong {
+  display: block;
+  font: 700 12px var(--font-display);
+  letter-spacing: 1px;
+  color: #00d2ff;
+  margin-bottom: 2px;
+}
+
+.instr-step-body p {
+  margin: 0;
+  font: 11px/1.45 var(--font-body);
+  color: rgba(200, 220, 255, 0.85);
+}
+
+.instructions-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.instructions-btn-primary {
+  width: 100%;
+  padding: 12px 20px;
+  font: 800 13px var(--font-display);
+  letter-spacing: 2px;
+  color: #fff;
+  background: linear-gradient(135deg, rgba(0, 140, 255, 0.8), rgba(0, 80, 200, 0.8));
+  border: 1px solid #00d2ff;
+  border-radius: 3px;
+  box-shadow: 0 0 25px rgba(0, 168, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.instructions-btn-primary:hover {
+  background: linear-gradient(135deg, rgba(0, 170, 255, 0.95), rgba(0, 100, 230, 0.95));
+  box-shadow: 0 0 35px rgba(0, 168, 255, 0.8);
+  transform: translateY(-2px);
+}
+
+.instructions-modal.hidden {
+  display: none !important;
+}
+
+/* Secondary Button Row */
+.secondary-btn-row {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.secondary-btn-row button {
+  flex: 1;
+  padding: 10px 8px;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+/* ════════════════════════════════════════════
    BUY ME A COFFEE / SUPPORT MODAL
    ════════════════════════════════════════════ */
 .btn-coffee {
@@ -1368,8 +1569,8 @@ button:disabled {
 @media (max-width: 768px) {
   /* Start Screen & Card */
   #start {
-    padding: 12px;
-    align-items: flex-start;
+    padding: 10px 8px;
+    align-items: center;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
@@ -1377,49 +1578,136 @@ button:disabled {
   .sl-window.card {
     width: 100% !important;
     max-width: 100% !important;
-    padding: 20px 16px 18px !important;
+    padding: 16px 12px 14px !important;
     margin: auto 0;
+    border-radius: 6px;
+  }
+
+  .sl-laptop-banner {
+    padding: 6px 10px !important;
+    margin: 4px auto 8px !important;
+    gap: 2px !important;
+  }
+
+  .sl-laptop-text {
+    font-size: 11px !important;
+    letter-spacing: 1px !important;
+  }
+
+  .sl-laptop-sub {
+    font-size: 9px !important;
+    letter-spacing: 0.5px !important;
+  }
+
+  .sl-alert-row {
+    margin-bottom: 2px !important;
+  }
+
+  .sl-alert-text {
+    font-size: 9px !important;
+    letter-spacing: 1.5px !important;
   }
 
   h1 {
-    font-size: clamp(32px, 8vw, 44px) !important;
+    font-size: clamp(28px, 7.5vw, 38px) !important;
     letter-spacing: 2px !important;
+    margin-bottom: 2px !important;
   }
 
   p.tag {
-    font-size: 11px !important;
-    margin-bottom: 12px !important;
+    font-size: 10px !important;
+    margin: 2px 0 8px !important;
+    line-height: 1.3 !important;
   }
 
+  /* Quick guide on phones: streamlined single line chips or cleaner cards */
   .sl-quick-guide {
-    gap: 6px !important;
-    margin: 10px 0 !important;
-  }
-
-  .sl-guide-item {
-    font-size: 11px !important;
-    padding: 6px 8px !important;
+    display: none !important; /* Hide inline quick guide on phones since we have the dedicated HOW TO PLAY modal! */
   }
 
   .options {
-    flex-direction: column !important;
-    gap: 8px !important;
-    margin: 12px 0 !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 6px !important;
+    margin: 8px 0 10px !important;
+    padding: 6px 8px;
+    background: rgba(0, 168, 255, 0.04);
+    border: 1px solid rgba(0, 168, 255, 0.15);
+    border-radius: 4px;
   }
 
   .options label {
-    font-size: 11px !important;
-    justify-content: space-between;
+    font-size: 10px !important;
+    margin: 0 !important;
+  }
+
+  .options select {
+    padding: 3px 6px !important;
+    font-size: 10px !important;
   }
 
   .buttons {
+    display: flex !important;
+    flex-direction: column !important;
     gap: 8px !important;
+    margin-bottom: 8px !important;
   }
 
   .buttons button {
-    padding: 12px 14px !important;
+    padding: 10px 12px !important;
+    font-size: 12px !important;
+    letter-spacing: 1.5px !important;
+    min-height: 42px; /* Good touch target */
+  }
+
+  .buttons button.primary {
+    padding: 13px 14px !important;
     font-size: 13px !important;
-    min-height: 44px; /* Touch target guideline */
+  }
+
+  .secondary-btn-row {
+    display: flex !important;
+    gap: 6px !important;
+    width: 100% !important;
+  }
+
+  .secondary-btn-row button {
+    flex: 1 !important;
+    padding: 8px 4px !important;
+    font-size: 10px !important;
+    letter-spacing: 0.5px !important;
+    min-height: 38px !important;
+  }
+
+  .sl-footer-row {
+    flex-direction: column !important;
+    gap: 6px !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  .sl-hunter-badge {
+    padding: 4px 10px !important;
+    gap: 6px !important;
+  }
+
+  .sl-footer-id {
+    font-size: 10px !important;
+  }
+
+  .sl-footer-id strong {
+    font-size: 11px !important;
+  }
+
+  .sl-hunter-rank-tag {
+    font-size: 8px !important;
+    padding: 1px 4px !important;
+  }
+
+  .sl-footer-ver {
+    font-size: 9px !important;
+    opacity: 0.7;
   }
 
   /* HUD Panels on Mobile (Portait & Landscape) */

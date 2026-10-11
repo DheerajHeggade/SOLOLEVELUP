@@ -418,6 +418,12 @@ if (supportBtn) {
     hud.supportModal.open('SUPPORT THE CREATOR', 'Buy Dheeraj a coffee to fuel SoloLevelUp development!', true);
   });
 }
+const instructionsBtn = document.getElementById('btn-open-instructions');
+if (instructionsBtn) {
+  instructionsBtn.addEventListener('click', () => {
+    hud.instructionsModal.open();
+  });
+}
 if (new URLSearchParams(location.search).has('demo')) void start('demo');
 
 if (import.meta.env.DEV) {

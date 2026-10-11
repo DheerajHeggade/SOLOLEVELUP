@@ -129,12 +129,17 @@
           <button id="start-camera">
             ⚡ 2-PLAYER DUEL (LIVE GATE)
           </button>
-          <button id="start-demo">
-            ▶ SPECTATE
-          </button>
-          <button id="btn-open-support" type="button" class="btn-coffee">
-            ☕ BUY ME A COFFEE
-          </button>
+          <div class="secondary-btn-row">
+            <button id="btn-open-instructions" type="button" class="btn-instruction">
+              📖 HOW TO PLAY
+            </button>
+            <button id="start-demo" class="btn-spectate">
+              ▶ SPECTATE
+            </button>
+            <button id="btn-open-support" type="button" class="btn-coffee">
+              ☕ COFFEE
+            </button>
+          </div>
         </div>
 
         <div id="status"></div>
@@ -147,6 +152,66 @@
             <span class="sl-hunter-rank-tag">MONARCH</span>
           </div>
           <span class="sl-footer-ver">SOLOLEVELUP v1.0</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Instructions / How to Play Modal (Solo Leveling Styled) -->
+    <div id="instructions-modal" class="instructions-modal hidden">
+      <div class="instructions-backdrop" id="instructions-backdrop"></div>
+      <div class="instructions-panel">
+        <span class="sl-c tl"></span><span class="sl-c tr"></span>
+        <span class="sl-c bl"></span><span class="sl-c br"></span>
+        <button id="btn-close-instructions" class="instructions-close" aria-label="Close">&times;</button>
+        <div class="instructions-header">
+          <span class="sl-hex">&#x2B21;</span>
+          <span class="instructions-sys-tag">S Y S T E M &mdash; H U N T E R   G U I D E</span>
+          <span class="sl-hex">&#x2B21;</span>
+        </div>
+        <div class="sl-sep"></div>
+        <div class="instructions-title">HUNTER COMBAT DIRECTIVE</div>
+        <div class="instructions-subtitle">Master your Ki &amp; conquer Solo Leveling dungeon gates</div>
+
+        <div class="instructions-content">
+          <div class="instr-step">
+            <div class="instr-step-icon">1</div>
+            <div class="instr-step-body">
+              <strong>POSITION YOURSELF</strong>
+              <p>Stand 1.5 to 2.5 meters away so your upper body and arms are clearly visible in the camera frame.</p>
+            </div>
+          </div>
+          <div class="instr-step">
+            <div class="instr-step-icon">2</div>
+            <div class="instr-step-body">
+              <strong>CHARGE KI (CUP HANDS)</strong>
+              <p>Bring both palms together near your hip or chest with palms facing each other to gather radiant blue Ki.</p>
+            </div>
+          </div>
+          <div class="instr-step">
+            <div class="instr-step-icon">3</div>
+            <div class="instr-step-body">
+              <strong>FIRE ENERGY BEAM</strong>
+              <p>Thrust both arms straight forward toward the screen with open palms to release a massive destructive beam!</p>
+            </div>
+          </div>
+          <div class="instr-step">
+            <div class="instr-step-icon">4</div>
+            <div class="instr-step-body">
+              <strong>BEAM CLASH (PUMP ARMS)</strong>
+              <p>When two beams collide, rapidly pump your arms forward to overpower your opponent's Ki beam!</p>
+            </div>
+          </div>
+          <div class="instr-step">
+            <div class="instr-step-icon">5</div>
+            <div class="instr-step-body">
+              <strong>AWAKEN YOUR RANK</strong>
+              <p>Spread both arms wide sideways with open palms to awaken your S-Rank hunter power &amp; pick abilities!</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="instructions-actions">
+          <button id="btn-close-instructions-ok" class="instructions-btn-primary">UNDERSTOOD &bull; ENTER GATE</button>
         </div>
       </div>
     </div>

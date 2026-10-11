@@ -164,6 +164,35 @@ export class AbilityScreen {
 }
 
 
+export class InstructionsModal {
+  private root: HTMLElement;
+  private closeBtn: HTMLElement;
+  private okBtn: HTMLElement;
+  private backdrop: HTMLElement;
+  isOpen = false;
+
+  constructor() {
+    this.root = document.getElementById('instructions-modal')!;
+    this.closeBtn = document.getElementById('btn-close-instructions')!;
+    this.okBtn = document.getElementById('btn-close-instructions-ok')!;
+    this.backdrop = document.getElementById('instructions-backdrop')!;
+
+    this.closeBtn?.addEventListener('click', () => this.close());
+    this.okBtn?.addEventListener('click', () => this.close());
+    this.backdrop?.addEventListener('click', () => this.close());
+  }
+
+  open() {
+    this.isOpen = true;
+    this.root.classList.remove('hidden');
+  }
+
+  close() {
+    this.isOpen = false;
+    this.root.classList.add('hidden');
+  }
+}
+
 export class SupportModal {
   private root: HTMLElement;
   private closeBtn: HTMLElement;
@@ -354,6 +383,7 @@ export class Hud {
   readonly notify: SoloNotification;
   readonly abilityScreen: AbilityScreen;
   readonly supportModal: SupportModal;
+  readonly instructionsModal: InstructionsModal;
 
   constructor(root: HTMLElement, private layout: Layout) {
     this.panels   = [new PlayerPanel(0), new PlayerPanel(1)];
@@ -388,6 +418,7 @@ export class Hud {
     this.notify = new SoloNotification();
     this.abilityScreen = new AbilityScreen();
     this.supportModal = new SupportModal();
+    this.instructionsModal = new InstructionsModal();
   }
 
 
