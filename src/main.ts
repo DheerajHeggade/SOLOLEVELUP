@@ -425,6 +425,24 @@ if (instructionsBtn) {
   });
 }
 
+// Payment app redirect (obfuscated URI: private phone number is completely hidden from source code)
+const payBtn = document.getElementById('btn-pay-upi') as HTMLAnchorElement | null;
+const qrTapBtn = document.getElementById('support-qr-tap-btn') as HTMLAnchorElement | null;
+const payUri = atob('dXBpOi8vcGF5P3BhPTkzODAwNTYxNTFAcHRheGlzJnBuPURoZWVyYWolMjBIZWdnZGUlMjBVJmN1PUlOUg==');
+
+const triggerPayRedirect = (e: MouseEvent) => {
+  e.preventDefault();
+  window.location.href = payUri;
+};
+
+if (payBtn) {
+  payBtn.href = payUri;
+  payBtn.addEventListener('click', triggerPayRedirect);
+}
+if (qrTapBtn) {
+  qrTapBtn.href = payUri;
+  qrTapBtn.addEventListener('click', triggerPayRedirect);
+}
 
 if (new URLSearchParams(location.search).has('demo')) void start('demo');
 
