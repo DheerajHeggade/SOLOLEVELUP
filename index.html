@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SoloLevelUp — Shadow Hunter | Dheeraj Heggade</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2240%27 fill=%27%2300a8ff%27/%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2218%27 fill=%27%23000a20%27/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <video id="video" playsinline muted></video>
+    <canvas id="fx"></canvas>
+    <canvas id="overlay"></canvas>
+    <div id="hud" class="hidden"></div>
+
+    <!-- Ability Selection Screen -->
+    <div id="ability-screen" class="ability-screen hidden">
+      <div class="ability-overlay"></div>
+      <div class="ability-panel">
+        <span class="sl-c tl"></span><span class="sl-c tr"></span>
+        <span class="sl-c bl"></span><span class="sl-c br"></span>
+        <div class="ability-header">
+          <span class="sl-hex">⬡</span>
+          <span class="ability-sys-text">S Y S T E M &mdash; A B I L I T Y   S E L E C T I O N</span>
+          <span class="sl-hex">⬡</span>
+        </div>
+        <div class="ability-sep"></div>
+        <div class="ability-rank-row">
+          <div class="ability-rank-meta">
+            <span class="ability-rank-label">HUNTER RANK</span>
+            <span class="ability-rank-tier">MONARCH CANDIDATE</span>
+          </div>
+          <span class="ability-rank-badge rank-s" id="ability-rank">S-RANK</span>
+        </div>
+        <div class="ability-instruction">SHOW 1 TO 5 FINGERS TO HIGHLIGHT &bull; CLOSE FIST THEN OPEN PALM TO CONFIRM</div>
+        <div class="ability-grid" id="ability-grid"></div>
+        <div class="ability-confirm" id="ability-confirm">
+          <span class="ability-confirm-icon">&#10022;</span>
+          <span id="ability-confirm-text">Show 1 to 5 fingers to choose an ability</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Solo Leveling System Notification overlay -->
+
+    <div id="sl-notif" class="sl-notif" aria-live="polite">
+      <span class="sl-c tl"></span><span class="sl-c tr"></span>
+      <span class="sl-c bl"></span><span class="sl-c br"></span>
+      <div class="sl-notif-header">
+        <span class="sl-hex">⬡</span>
+        <span class="sl-notif-sys">S Y S T E M</span>
+        <span class="sl-hex">⬡</span>
+      </div>
+      <div class="sl-notif-sep"></div>
+      <div class="sl-notif-title" id="sl-notif-title"></div>
+      <div class="sl-notif-body" id="sl-notif-body"></div>
+    </div>
+
+    <div id="start">
+      <!-- Animated scan line -->
+      <div class="sl-scanline"></div>
+
+      <!-- Background energy particles -->
+      <div class="sl-bg">
+        <div class="sl-orb sl-orb1"></div>
+        <div class="sl-orb sl-orb2"></div>
+        <div class="sl-orb sl-orb3"></div>
+      </div>
+
+      <!-- System window card -->
+      <div class="sl-window card">
+        <span class="sl-c tl"></span><span class="sl-c tr"></span>
+        <span class="sl-c bl"></span><span class="sl-c br"></span>
+
+        <!-- Window chrome header -->
+        <div class="sl-win-header">
+          <span class="sl-hex">⬡</span>
+          <span class="sl-win-title">S Y S T E M</span>
+          <span class="sl-hex">⬡</span>
+        </div>
+        <div class="sl-sep"></div>
+
+        <div class="sl-alert-row">
+          <span class="sl-chevron">»</span>
+          <span class="sl-alert-text">HUNTER AWAKENING DETECTED</span>
+          <span class="sl-chevron">«</span>
+        </div>
+
+        <h1>SOLO<span class="sl-h1-accent">LEVELUP</span></h1>
+        <p class="tag">Channel your Ki &mdash; fire energy beams &mdash; challenge a Hunter</p>
+
+        <div class="sl-sep sl-sep-sm"></div>
+
+        <div class="sl-quick-guide">
+          <div class="sl-guide-item"><span class="sl-guide-icon">✦</span> Cup hands at hip &rarr; charge Ki</div>
+          <div class="sl-guide-item"><span class="sl-guide-icon">⚡</span> Thrust both arms forward &rarr; <strong>FIRE!</strong></div>
+          <div class="sl-guide-item"><span class="sl-guide-icon">⚔</span> Two hunters = beam duel &rarr; pump arms to win</div>
+        </div>
+
+        <div class="sl-sep sl-sep-sm"></div>
+
+        <div class="options">
+          <label>Detection Model
+            <select id="model">
+              <option value="lite">Lite (fastest)</option>
+              <option value="full" selected>Full (balanced)</option>
+              <option value="heavy">Heavy (accurate)</option>
+            </select>
+          </label>
+          <label class="check"><input type="checkbox" id="hands" checked /> Hand Tracking</label>
+        </div>
+
+        <div class="buttons">
+          <button id="start-solo-monster" class="primary">
+            ⚔️ SOLO DUNGEON (VS MONSTERS)
+          </button>
+          <button id="start-camera">
+            ⚡ 2-PLAYER DUEL (LIVE GATE)
+          </button>
+          <button id="start-demo">
+            ▶ SPECTATE
+          </button>
+          <button id="btn-open-support" type="button" class="btn-coffee">
+            ☕ BUY ME A COFFEE
+          </button>
+        </div>
+
+        <div id="status"></div>
+
+        <div class="sl-sep sl-sep-sm"></div>
+        <div class="sl-footer-row">
+          <span class="sl-footer-id">HUNTER ID: DHEERAJ HEGGADE</span>
+          <span class="sl-footer-ver">SOLOLEVELUP v1.0</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Buy Me A Coffee / Support Modal (Solo Leveling Styled) -->
+    <div id="support-modal" class="support-modal hidden">
+      <div class="support-backdrop" id="support-backdrop"></div>
+      <div class="support-panel">
+        <span class="sl-c tl"></span><span class="sl-c tr"></span>
+        <span class="sl-c bl"></span><span class="sl-c br"></span>
+        <button id="btn-close-support" class="support-close" aria-label="Close">&times;</button>
+        <div class="support-header">
+          <span class="sl-hex">&#x2B21;</span>
+          <span class="support-sys-tag">S Y S T E M &mdash; B E N E F A C T O R   P O R T A L</span>
+          <span class="sl-hex">&#x2B21;</span>
+        </div>
+        <div class="sl-sep"></div>
+        <div class="support-title">SUPPORT THE CREATOR</div>
+        <div class="support-subtitle">Fuel SoloLevelUp development &bull; Buy Dheeraj a coffee!</div>
+        
+        <div class="support-qr-box">
+          <img src="/upi-qr.jpg" alt="UPI QR Code - Dheeraj Heggade" class="support-qr-img" />
+          <div class="support-scan-line"></div>
+        </div>
+
+        <div class="support-upi-info">
+          <span class="support-upi-badge">SCAN WITH ANY UPI APP</span>
+          <div class="support-upi-apps">GPay &bull; PhonePe &bull; Paytm &bull; BHIM</div>
+        </div>
+
+        <div class="support-actions">
+          <button id="btn-resume-game" class="support-btn-primary">CONTINUE TO GATE</button>
+        </div>
+      </div>
+    </div>
+
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

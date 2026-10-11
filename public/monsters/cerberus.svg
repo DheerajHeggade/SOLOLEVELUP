@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 600" width="500" height="600">
+  <defs>
+    <filter id="fireGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="10" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <radialGradient id="hellAura" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ff3d00" stop-opacity="0.7"/>
+      <stop offset="60%" stop-color="#b71c1c" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- Hellfire Aura -->
+  <circle cx="250" cy="300" r="230" fill="url(#hellAura)" />
+
+  <!-- Massive Demon Hound Body -->
+  <path d="M120,550 Q250,440 380,550 L420,590 L80,590 Z" fill="#1a0505" stroke="#d50000" stroke-width="4"/>
+  <path d="M140,360 Q250,300 360,360 L400,530 Q250,460 100,530 Z" fill="#260000" stroke="#ff1744" stroke-width="4"/>
+
+  <!-- Center Head -->
+  <path d="M200,160 L250,110 L300,160 L310,260 L250,290 L190,260 Z" fill="#1f0000" stroke="#ff5722" stroke-width="3"/>
+  <!-- Center Ears/Horns -->
+  <polygon points="210,150 200,90 230,130" fill="#3e0000" stroke="#ff3d00" stroke-width="2"/>
+  <polygon points="290,150 300,90 270,130" fill="#3e0000" stroke="#ff3d00" stroke-width="2"/>
+  <!-- Center Flaming Eyes -->
+  <polygon points="220,180 240,190 225,200" fill="#ffeb3b" filter="url(#fireGlow)"/>
+  <polygon points="280,180 260,190 275,200" fill="#ffeb3b" filter="url(#fireGlow)"/>
+  <!-- Center Maw -->
+  <path d="M220,240 Q250,280 280,240 Q250,250 220,240" fill="#ff1744" filter="url(#fireGlow)"/>
+
+  <!-- Left Head -->
+  <path d="M110,200 L150,150 L190,200 L190,290 L130,300 L90,270 Z" fill="#1a0000" stroke="#ff3d00" stroke-width="3"/>
+  <polygon points="120,190 100,130 140,170" fill="#2d0000" stroke="#ff3d00" stroke-width="2"/>
+  <polygon points="120,220 140,230 125,240" fill="#ff9100" filter="url(#fireGlow)"/>
+  <polygon points="170,220 150,230 165,240" fill="#ff9100" filter="url(#fireGlow)"/>
+
+  <!-- Right Head -->
+  <path d="M390,200 L350,150 L310,200 L310,290 L370,300 L410,270 Z" fill="#1a0000" stroke="#ff3d00" stroke-width="3"/>
+  <polygon points="380,190 400,130 360,170" fill="#2d0000" stroke="#ff3d00" stroke-width="2"/>
+  <polygon points="380,220 360,230 375,240" fill="#ff9100" filter="url(#fireGlow)"/>
+  <polygon points="330,220 350,230 335,240" fill="#ff9100" filter="url(#fireGlow)"/>
+
+  <!-- Magma Core in Chest -->
+  <circle cx="250" cy="420" r="35" fill="#ff3d00" filter="url(#fireGlow)"/>
+</svg>

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 650" width="500" height="650">
+  <defs>
+    <filter id="cyanGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <radialGradient id="beruAura" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00e5ff" stop-opacity="0.7"/>
+      <stop offset="50%" stop-color="#002171" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="chitinArmor" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a237e"/>
+      <stop offset="60%" stop-color="#0d47a1"/>
+      <stop offset="100%" stop-color="#000051"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Royal Ant Monarch Aura -->
+  <circle cx="250" cy="320" r="240" fill="url(#beruAura)"/>
+
+  <!-- Chitinous Exoskeleton Wings (Spread open) -->
+  <path d="M230,220 Q100,80 40,160 Q80,300 210,320 Z" fill="#001064" stroke="#00e5ff" stroke-width="2" opacity="0.7"/>
+  <path d="M270,220 Q400,80 460,160 Q420,300 290,320 Z" fill="#001064" stroke="#00e5ff" stroke-width="2" opacity="0.7"/>
+
+  <!-- Armored Chitin Torso -->
+  <polygon points="180,240 250,210 320,240 300,450 250,490 200,450" fill="url(#chitinArmor)" stroke="#00e5ff" stroke-width="4"/>
+
+  <!-- Ant King Head with Sharp Mandibles -->
+  <path d="M190,130 L250,90 L310,130 L290,220 L250,240 L210,220 Z" fill="url(#chitinArmor)" stroke="#00b0ff" stroke-width="3"/>
+  <!-- Long Antennae -->
+  <path d="M220,100 Q170,20 120,40" stroke="#00e5ff" stroke-width="4" fill="none" filter="url(#cyanGlow)"/>
+  <path d="M280,100 Q330,20 380,40" stroke="#00e5ff" stroke-width="4" fill="none" filter="url(#cyanGlow)"/>
+
+  <!-- Deadly Mandibles -->
+  <path d="M200,210 Q170,260 210,280 Q225,240 220,210" fill="#37474f" stroke="#00e5ff" stroke-width="2"/>
+  <path d="M300,210 Q330,260 290,280 Q275,240 280,210" fill="#37474f" stroke="#00e5ff" stroke-width="2"/>
+
+  <!-- Monarch Glowing Blue Slit Eyes -->
+  <ellipse cx="220" cy="160" rx="8" ry="4" transform="rotate(-15 220 160)" fill="#ffffff" filter="url(#cyanGlow)"/>
+  <ellipse cx="280" cy="160" rx="8" ry="4" transform="rotate(15 280 160)" fill="#ffffff" filter="url(#cyanGlow)"/>
+
+  <!-- Scythe Claws Ready to Strike -->
+  <path d="M130,250 Q60,330 90,440 Q130,360 160,320" fill="url(#chitinArmor)" stroke="#00e5ff" stroke-width="3"/>
+  <path d="M370,250 Q440,330 410,440 Q370,360 340,320" fill="url(#chitinArmor)" stroke="#00e5ff" stroke-width="3"/>
+
+  <!-- Monarch Energy Sphere at Chest -->
+  <circle cx="250" cy="380" r="32" fill="#00e5ff" filter="url(#cyanGlow)"/>
+</svg>

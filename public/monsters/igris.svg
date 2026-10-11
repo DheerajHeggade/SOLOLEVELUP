@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 650" width="450" height="650">
+  <defs>
+    <filter id="bloodGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="10" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <radialGradient id="igrisAura" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#d50000" stop-opacity="0.7"/>
+      <stop offset="65%" stop-color="#4a0000" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="armorMetal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#37474f"/>
+      <stop offset="50%" stop-color="#212121"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Aura of Blood Monarch -->
+  <circle cx="225" cy="320" r="220" fill="url(#igrisAura)"/>
+
+  <!-- Massive Red Plume / Cape flowing up from helmet -->
+  <path d="M225,120 Q200,20 280,0 Q320,60 250,130 Z" fill="#b71c1c" filter="url(#bloodGlow)"/>
+  <path d="M230,120 Q300,30 380,20 Q350,90 240,140 Z" fill="#d50000" opacity="0.8"/>
+
+  <!-- Armored Shoulders (Crimson Pauldrons) -->
+  <polygon points="120,230 40,210 70,300 140,280" fill="#b71c1c" stroke="#ff1744" stroke-width="3"/>
+  <polygon points="330,230 410,210 380,300 310,280" fill="#b71c1c" stroke="#ff1744" stroke-width="3"/>
+
+  <!-- Chestplate -->
+  <polygon points="140,230 225,210 310,230 280,390 225,430 170,390" fill="url(#armorMetal)" stroke="#d50000" stroke-width="4"/>
+  <!-- Crimson Chest Sigil -->
+  <polygon points="225,250 245,290 225,330 205,290" fill="#ff1744" filter="url(#bloodGlow)"/>
+
+  <!-- Knight Helmet -->
+  <path d="M175,140 L225,110 L275,140 L265,220 L225,245 L185,220 Z" fill="url(#armorMetal)" stroke="#d50000" stroke-width="3"/>
+  <!-- T-Shaped Visor with Piercing White-Cyan Eyes -->
+  <polygon points="190,175 225,170 260,175 245,185 225,180 205,185" fill="#000" stroke="#b71c1c" stroke-width="2"/>
+  <circle cx="210" cy="177" r="4" fill="#ffffff" filter="url(#bloodGlow)"/>
+  <circle cx="240" cy="177" r="4" fill="#ffffff" filter="url(#bloodGlow)"/>
+
+  <!-- Broadsword / Two Handed Blade -->
+  <polygon points="220,380 230,380 235,620 225,640 215,620" fill="#cfd8dc" stroke="#d50000" stroke-width="3" filter="url(#bloodGlow)"/>
+  <!-- Crossguard -->
+  <rect x="190" y="375" width="70" height="12" fill="#b71c1c" stroke="#ff1744" stroke-width="2"/>
+</svg>

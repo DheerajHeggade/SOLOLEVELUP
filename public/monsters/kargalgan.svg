@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 650" width="450" height="650">
+  <defs>
+    <filter id="purpleGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="10" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <radialGradient id="shamanAura" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7b1fa2" stop-opacity="0.7"/>
+      <stop offset="60%" stop-color="#4a148c" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Dark Shaman Aura -->
+  <circle cx="225" cy="320" r="220" fill="url(#shamanAura)"/>
+
+  <!-- High Orc Robes -->
+  <path d="M120,320 Q225,290 330,320 L370,620 L80,620 Z" fill="#2e0854" stroke="#aa00ff" stroke-width="4"/>
+  
+  <!-- Shaman Skull Headdress & Horns -->
+  <path d="M150,150 Q225,100 300,150 L280,240 Q225,270 170,240 Z" fill="#d7ccc8" stroke="#5d4037" stroke-width="3"/>
+  <!-- Curved Antelope / Dragon Horns -->
+  <path d="M160,140 Q100,50 60,70 Q110,120 150,150" fill="#3e2723" stroke="#7b1fa2" stroke-width="3"/>
+  <path d="M290,140 Q350,50 390,70 Q340,120 300,150" fill="#3e2723" stroke="#7b1fa2" stroke-width="3"/>
+
+  <!-- Glowing Mystic Eyes -->
+  <circle cx="195" cy="185" r="6" fill="#ea80fc" filter="url(#purpleGlow)"/>
+  <circle cx="255" cy="185" r="6" fill="#ea80fc" filter="url(#purpleGlow)"/>
+
+  <!-- Shamanic Bead Necklace & Talismans -->
+  <circle cx="225" cy="290" r="16" fill="#ff1744" filter="url(#purpleGlow)"/>
+  <circle cx="185" cy="280" r="12" fill="#ffd600"/>
+  <circle cx="265" cy="280" r="12" fill="#ffd600"/>
+
+  <!-- Orb of the High Shaman Floating Above Hands -->
+  <circle cx="225" cy="420" r="40" fill="#aa00ff" filter="url(#purpleGlow)" opacity="0.9"/>
+  <circle cx="225" cy="420" r="20" fill="#ffffff" filter="url(#purpleGlow)"/>
+</svg>

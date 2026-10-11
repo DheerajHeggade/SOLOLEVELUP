@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 600" width="400" height="600">
+  <defs>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <radialGradient id="goblinAura" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00ff66" stop-opacity="0.6"/>
+      <stop offset="70%" stop-color="#006622" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="skinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#388e3c"/>
+      <stop offset="100%" stop-color="#1b5e20"/>
+    </linearGradient>
+  </defs>
+  <!-- Background Aura -->
+  <circle cx="200" cy="280" r="180" fill="url(#goblinAura)" />
+  
+  <!-- Shadow Cloak / Body -->
+  <path d="M110,480 Q200,530 290,480 L320,580 L80,580 Z" fill="#111a14" stroke="#2e7d32" stroke-width="2"/>
+  <path d="M120,330 Q200,360 280,330 L300,510 Q200,530 100,510 Z" fill="#1e382b" stroke="#388e3c" stroke-width="3"/>
+  <!-- Torso Leather Straps -->
+  <path d="M130,340 L270,480 M270,340 L130,480" stroke="#4e342e" stroke-width="8" opacity="0.8"/>
+
+  <!-- Head -->
+  <ellipse cx="200" cy="220" rx="65" ry="75" fill="url(#skinGrad)" stroke="#4caf50" stroke-width="3"/>
+  
+  <!-- Pointed Ears -->
+  <path d="M140,210 Q90,160 50,170 Q100,220 140,240 Z" fill="url(#skinGrad)" stroke="#4caf50" stroke-width="2"/>
+  <path d="M260,210 Q310,160 350,170 Q300,220 260,240 Z" fill="url(#skinGrad)" stroke="#4caf50" stroke-width="2"/>
+
+  <!-- Glowing Yellow Eyes -->
+  <polygon points="160,200 185,210 165,220" fill="#ffeb3b" filter="url(#glow)"/>
+  <polygon points="240,200 215,210 235,220" fill="#ffeb3b" filter="url(#glow)"/>
+  <circle cx="172" cy="210" r="3" fill="#ff1744"/>
+  <circle cx="228" cy="210" r="3" fill="#ff1744"/>
+
+  <!-- Snarl Mouth & Fangs -->
+  <path d="M160,260 Q200,285 240,260 Q200,270 160,260" fill="#1a0000" stroke="#b71c1c" stroke-width="2"/>
+  <polygon points="175,260 182,275 190,262" fill="#fff"/>
+  <polygon points="210,262 218,275 225,260" fill="#fff"/>
+  <polygon points="195,273 200,262 205,273" fill="#fff"/>
+
+  <!-- Clawed Arms preparing blast -->
+  <path d="M120,340 Q70,400 90,440 Q130,430 140,380" fill="url(#skinGrad)" stroke="#2e7d32" stroke-width="3"/>
+  <path d="M280,340 Q330,400 310,440 Q270,430 260,380" fill="url(#skinGrad)" stroke="#2e7d32" stroke-width="3"/>
+  <!-- Poison energy ball at chest -->
+  <circle cx="200" cy="420" r="25" fill="#00e676" filter="url(#glow)" opacity="0.8"/>
+</svg>
