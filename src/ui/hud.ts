@@ -85,9 +85,22 @@ export class AbilityScreen {
       const name = el('div', 'ability-card-name', ab.name);
       const desc = el('div', 'ability-card-desc', ab.desc);
       card.append(fingerBadge, icon, name, desc);
-      card.addEventListener('click', () => this.select(idx));
+      card.addEventListener('click', () => {
+        if (this.selectedIndex === idx) {
+          // Tap twice to confirm immediately on mobile
+          this.close();
+        } else {
+          this.select(idx);
+        }
+      });
       this.grid.append(card);
       this.cards.push(card);
+    });
+
+    this.confirmBox.addEventListener('click', () => {
+      if (this.selectedIndex !== -1) {
+        this.close();
+      }
     });
   }
 

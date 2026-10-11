@@ -295,12 +295,12 @@ function frame(nowMs: number) {
     if (!recorder.push(raw, now)) stopRecording();
     tracker.update(raw, now, layout.aspect);
     if (monsterBot.active) {
-      tracker.ingestMonsterPose(monsterBot.generatePoseFrame(now), now);
+      tracker.ingestMonsterPose(monsterBot.generatePoseFrame(now, layout.aspect), now);
     }
   } else {
     tracker.tick(now);
     if (monsterBot.active) {
-      tracker.ingestMonsterPose(monsterBot.generatePoseFrame(now), now);
+      tracker.ingestMonsterPose(monsterBot.generatePoseFrame(now, layout.aspect), now);
     }
   }
 

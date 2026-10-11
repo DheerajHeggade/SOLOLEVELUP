@@ -155,7 +155,7 @@ export class MonsterBot {
   /**
    * Generates synthetic PoseFrame for slot 1 (facing left, placed on right side of screen).
    */
-  generatePoseFrame(now: number): PoseFrame {
+  generatePoseFrame(now: number, aspect = this.aspect): PoseFrame {
     if (this.roundStart === null) {
       this.roundStart = now;
     }
@@ -175,10 +175,15 @@ export class MonsterBot {
       world = blendWorld(buildWorldPose('charge'), buildWorldPose('fire', pump), smooth(ft / 0.25));
     }
 
+    // On narrow vertical mobile screens (aspect < 1.0), adjust cx so monster is clearly visible on the right
+    const cx = aspect < 1.0 ? 0.76 : 0.82;
+    const scale = aspect < 1.0 ? 0.36 : 0.42;
+
     return toPoseFrame(world, {
       facing: -1,
-      cx: 0.82,
-      aspect: this.aspect,
+      cx,
+      scale,
+      aspect,
     });
   }
 }

@@ -121,25 +121,24 @@ export function analyzePose(frame: PlayerFrame, aspect: number): FormAnalysis | 
   const reach = len3(reachVec) / armLen;
 
   // --- Charge: cupped hands together, pulled back to the hip, elbows bent.
-  const cTogether = ramp(wristGap, 1.0, 0.6);
-  const cBent = ramp(elbowAvg, 145, 110);
-  const cLow = ramp(below, 0.25, 0.5);
+  // Phone cameras have steeper vertical angles; widen tolerance for hands together and bent elbows
+  const cTogether = ramp(wristGap, 1.25, 0.55);
+  const cBent = ramp(elbowAvg, 155, 105);
+  const cLow = ramp(below, 0.15, 0.45);
   const chargePose = Math.min(cTogether, cBent, cLow);
-  const sidePull = ramp(Math.hypot(wristMid.x - hipMid.x, wristMid.z - hipMid.z) / S, 0.15, 0.5);
+  const sidePull = ramp(Math.hypot(wristMid.x - hipMid.x, wristMid.z - hipMid.z) / S, 0.10, 0.45);
 
   // --- Fire (strict, static): both arms thrust out straight, wrists together, chest height.
-  const fExtend = ramp(elbowAvg, 128, 150) * ramp(elbowMin, 110, 135);
-  const fTogether = ramp(wristGap, 1.4, 0.8);
-  const fReach = ramp(reach, 0.55, 0.78);
-  const fHeight = ramp(below, -0.8, -0.45) * ramp(below, 0.95, 0.65);
+  const fExtend = ramp(elbowAvg, 120, 145) * ramp(elbowMin, 100, 130);
+  const fTogether = ramp(wristGap, 1.6, 0.7);
+  const fReach = ramp(reach, 0.48, 0.72);
+  const fHeight = ramp(below, -0.9, -0.45) * ramp(below, 1.1, 0.65);
   const firePose = Math.min(fExtend, fTogether, fReach, fHeight);
 
   // Loose cues for detecting the release as a *movement* (see GestureController).
-  // MediaPipe underestimates depth for arms pointed at the lens, so straight arms
-  // often read as ~130°; these alone are too ambiguous to fire on.
   const forward = (shoulderMid.z - wristMid.z) / armLen;
-  const extension = Math.max(ramp(elbowAvg, 115, 145) * ramp(elbowMin, 95, 125), ramp(forward, 0.2, 0.45));
-  const looseHeight = ramp(below, -0.8, -0.45) * ramp(below, 0.85, 0.6);
+  const extension = Math.max(ramp(elbowAvg, 110, 140) * ramp(elbowMin, 90, 120), ramp(forward, 0.15, 0.40));
+  const looseHeight = ramp(below, -0.9, -0.45) * ramp(below, 0.95, 0.6);
 
   // --- Power-up (Goku going Super Saiyan): fists pulled in to the hips, both elbows bent back,
   // in a deep horse stance (checked below). Wrists apart separates it from the charge pose,
