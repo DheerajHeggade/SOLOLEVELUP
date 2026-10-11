@@ -164,10 +164,11 @@ export function analyzePose(frame: PlayerFrame, aspect: number): FormAnalysis | 
   const palms = frame.hands.length ? avg(frame.hands.map(handOpenness)) : null;
 
   // --- Awakening pose: arms spread wide sideways, elbows out/open, wrists separated sideways
-  const awApart = ramp(wristGap, 1.4, 2.2);
-  const awHeight = ramp(below, -0.6, -0.2) * ramp(below, 0.7, 0.3);
-  const awElbow = ramp(elbowMin, 90, 125);
-  const awPalms = palms === null ? 0.8 : ramp(palms, 0.35, 0.7);
+  // On mobile phone portrait cameras, FOV is narrower so allow 1.2 to 2.0 wristGap
+  const awApart = ramp(wristGap, 1.2, 2.0);
+  const awHeight = ramp(below, -0.65, -0.2) * ramp(below, 0.75, 0.3);
+  const awElbow = ramp(elbowMin, 85, 120);
+  const awPalms = palms === null ? 0.8 : ramp(palms, 0.3, 0.65);
   const armsWideOpen = Math.min(awApart, awHeight, awElbow) * awPalms;
 
   // The horse stance is required whenever the legs are in frame. Clenched fists help when the

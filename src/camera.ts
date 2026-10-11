@@ -13,15 +13,34 @@
 
 export async function openCamera(video: HTMLVideoElement): Promise<MediaStream> {
   if (!navigator.mediaDevices?.getUserMedia) {
-    throw new Error('Camera API unavailable. Open the app via http://localhost (not file://) in Chrome, Edge or Safari.');
+    throw new Error('Camera API unavailable. Open the app via HTTPS in Chrome, Edge, Safari or Firefox.');
   }
-  const stream = await navigator.mediaDevices.getUserMedia({
-    video: { width: { ideal: 1280 }, height: { ideal: 720 }, frameRate: { ideal: 30 }, facingMode: 'user' },
-    audio: false,
-  });
+
+  // Mobile-aware camera constraints: try ideal 1280x720, then fallback to default front camera
+  let stream: MediaStream;
+  try {
+    stream = await navigator.mediaDevices.getUserMedia({
+      video: {
+        facingMode: 'user',
+        width: { ideal: 1280, max: 1920 },
+        height: { ideal: 720, max: 1080 },
+        frameRate: { ideal: 30, max: 60 },
+      },
+      audio: false,
+    });
+  } catch {
+    // Basic mobile fallback without strict resolution requirements
+    stream = await navigator.mediaDevices.getUserMedia({
+      video: { facingMode: 'user' },
+      audio: false,
+    });
+  }
+
   video.srcObject = stream;
   video.muted = true;
   video.playsInline = true;
+  video.setAttribute('playsinline', 'true');
+  video.setAttribute('webkit-playsinline', 'true');
   await video.play();
   if (!video.videoWidth) await new Promise((r) => video.addEventListener('loadedmetadata', r, { once: true }));
   return stream;

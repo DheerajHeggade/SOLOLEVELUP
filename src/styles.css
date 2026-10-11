@@ -1255,3 +1255,202 @@ button:disabled {
 }
 
 
+
+/* ════════════════════════════════════════════
+   MOBILE & TOUCH RESPONSIVE ENHANCEMENTS
+   ════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  /* Start Screen & Card */
+  #start {
+    padding: 12px;
+    align-items: flex-start;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .sl-window.card {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 20px 16px 18px !important;
+    margin: auto 0;
+  }
+
+  h1 {
+    font-size: clamp(32px, 8vw, 44px) !important;
+    letter-spacing: 2px !important;
+  }
+
+  p.tag {
+    font-size: 11px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .sl-quick-guide {
+    gap: 6px !important;
+    margin: 10px 0 !important;
+  }
+
+  .sl-guide-item {
+    font-size: 11px !important;
+    padding: 6px 8px !important;
+  }
+
+  .options {
+    flex-direction: column !important;
+    gap: 8px !important;
+    margin: 12px 0 !important;
+  }
+
+  .options label {
+    font-size: 11px !important;
+    justify-content: space-between;
+  }
+
+  .buttons {
+    gap: 8px !important;
+  }
+
+  .buttons button {
+    padding: 12px 14px !important;
+    font-size: 13px !important;
+    min-height: 44px; /* Touch target guideline */
+  }
+
+  /* HUD Panels on Mobile (Portait & Landscape) */
+  .panel {
+    top: 8px !important;
+    padding: 8px 10px !important;
+    width: calc(50vw - 12px) !important;
+    max-width: 180px !important;
+  }
+
+  .panel.p1 { left: 8px !important; }
+  .panel.p2 { right: 8px !important; }
+
+  .panel-head {
+    font-size: 12px !important;
+  }
+
+  .state {
+    font-size: 9px !important;
+    margin: 2px 0 6px !important;
+  }
+
+  /* Hide verbose checklist on mobile to keep camera clean */
+  .checks {
+    display: none !important;
+  }
+
+  .form {
+    font-size: 9px !important;
+    margin-top: 4px;
+  }
+
+  /* Struggle Bar on Mobile */
+  .struggle {
+    bottom: 52px !important;
+    width: 90vw !important;
+  }
+
+  .struggle-title {
+    font-size: 14px !important;
+    letter-spacing: 1.5px !important;
+  }
+
+  .struggle-track {
+    height: 10px !important;
+  }
+
+  /* Bottom hint and keys */
+  .hint {
+    bottom: 12px !important;
+    padding: 6px 12px !important;
+    font-size: 10px !important;
+    max-width: 94vw !important;
+  }
+
+  .fps {
+    display: none !important;
+  }
+
+  /* Solo Leveling Notification Popup */
+  .sl-notif {
+    top: 10px !important;
+    width: min(340px, 94vw) !important;
+    padding: 12px 16px !important;
+  }
+
+  .sl-notif-title {
+    font-size: 13px !important;
+  }
+
+  .sl-notif-body {
+    font-size: 10px !important;
+  }
+
+  /* Ability Screen on Mobile */
+  .ability-panel {
+    width: 95vw !important;
+    padding: 18px 14px 16px !important;
+  }
+
+  .ability-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 6px !important;
+  }
+
+  .ability-grid .ability-card:nth-child(4),
+  .ability-grid .ability-card:nth-child(5) {
+    grid-column: span 1;
+  }
+
+  .ability-card {
+    padding: 10px 4px 8px !important;
+  }
+
+  .ability-card-icon {
+    font-size: 22px !important;
+    margin-bottom: 4px !important;
+  }
+
+  .ability-card-name {
+    font-size: 8px !important;
+  }
+
+  .ability-card-desc {
+    display: none !important; /* Hide long descriptions on small screens */
+  }
+
+  .ability-rank-badge {
+    font-size: 24px !important;
+    padding: 2px 14px !important;
+  }
+
+  /* Support / UPI Modal on Mobile */
+  .support-panel {
+    width: 94vw !important;
+    padding: 20px 16px 16px !important;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  .support-title {
+    font-size: 18px !important;
+  }
+
+  .support-qr-box {
+    width: 170px !important;
+    height: 170px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .support-upi-badge {
+    font-size: 9px !important;
+    padding: 3px 8px !important;
+  }
+
+  .support-upi-apps {
+    font-size: 9px !important;
+  }
+}
